@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-server
-  #namespace: go
+  namespace: devops
   labels:
     app: goapi
 spec:
@@ -30,7 +30,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: go-service
-  #namespace: go
+  namespace: devops
 spec:
   selector:
     app: goapi
@@ -42,19 +42,19 @@ spec:
 
 
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  #namespace: go
-  name: go-ingress
-  annotations:
-    allow.http: "false"
-spec:
-  rules:
-  - host: go.rancher.dev-ops-ninja.com
-    http:
-      paths:
-        - path: /
-          backend:
-            serviceName: go-service
-            servicePort: 80
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   #namespace: go
+#   name: go-ingress
+#   annotations:
+#     allow.http: "false"
+# spec:
+#   rules:
+#   - host: go.rancher.dev-ops-ninja.com
+#     http:
+#       paths:
+#         - path: /
+#           backend:
+#             serviceName: go-service
+#             servicePort: 80
